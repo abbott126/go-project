@@ -6,6 +6,35 @@
 ## 环境搭建：安装 Go（官网 go.dev）、配置 PATH、VS Code + Go 插件。
 
 
+### 检查环境
+
+```bash
+ [main] go version 
+go version go1.24.5 darwin/arm64
+
+```
+### 环境安装完成
+
+
+### 运行第一个hello world的程序
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("hello world")
+}
+```
+运行代码：
+```bash
+go run helloworld.go
+hello world
+```
+
+
+
 ## 工具链：go run、go build、go mod、go test、go fmt、go vet。
 
 
