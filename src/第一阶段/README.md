@@ -121,10 +121,189 @@ isOk := true
 
 #### 定义零值
 Go 中变量声明后如果没有赋值，会自动拥有零值：
-![Screenshot 2026-09-14 at 20.47.19.png](../../../../../../../../var/folders/gc/6d8y5nms19xcp5dlh29kzx640000gn/T/TemporaryItems/NSIRD_screencaptureui_2tRoKs/Screenshot%202026-09-14%20at%2020.47.19.png)
 
-### 常量
+| 类型                                 | 零值           |
+| ------------------------------------ | -------------- |
+| int、float                           | 0              |
+| bool                                 | false          |
+| string                               | ""（空字符串） |
+| 指针、切片、map、channel、函数、接口 | nil            |
+
+示例：
+
+```go
+var a int
+var b string
+var c bool
+fmt.Println(a, b, c)   // 输出：0  false
+```
+
+#### 一次声明多个变量
+
+```go
+// 方式1
+var a, b, c int = 1, 2, 3
+
+// 方式2（推荐）
+var (
+    name   string = "李四"
+    age    int    = 30
+    height float64 = 175.5
+)
+
+// 短声明
+x, y := 10, 20
+```
+
+#### 变量作用域
+
+**全局变量**：在函数外声明，整个包内可见。
+
+**局部变量**：在函数或代码块内声明，只在该作用域有效。
+
+```go
+package main
+
+import "fmt"
+
+var global = "我是全局变量"
+
+func main() {
+	local := "我是局部变量"
+	fmt.Println(local, global)
+	a()
+}
+
+func a() {
+	fmt.Println(global)
+}
+```
+
+#### 注意事项与最佳实践
+
+**未使用的变量会编译报错**（Go 强制要求）
+
+```go
+a := 10
+// 如果不使用 a，编译会失败
+```
+
+**尽量使用短声明 :=**
+
+- 代码更简洁
+- 只在函数内部使用
+
+**变量命名规范**
+
+- 使用驼峰命名（camelCase）
+- 包外可见用首字母大写（导出）
+- 包内使用首字母小写
+
+**不要过度使用全局变量**
+
+- 优先使用局部变量和函数参数
+
+完整的案例：
+
+```go
+package main
+
+import "fmt"
+
+var appName = "Go 学习示例"
+
+func main() {
+	name := "小李"
+	age := 18
+	score := 100
+	isPass := true
+
+	var (
+		city   = "北京"
+		school = "清华大学"
+	)
+
+	//fmt.Println(name, age, score, isPass, city, school)
+	fmt.Printf("应用的名称： %s\n", appName)
+	fmt.Printf("姓名: %s, 年龄: %d  分数: %.1f, 是否及格: %t\n ", name, age, score, isPass)
+	fmt.Printf("城市 %s ,学校 %s\n", city, school)
+}
+
+```
+
+
+
+### 常量**（Constants）**
+
+> 常量是编译时就确定、运行时不能修改的值。Go 的常量设计很简洁且强大。
+
+### 1. 基本声明方式
+
+```go
+const 常量名 类型 = 值
+const 常量名 = 值          // 类型可省略（编译器推断）
+```
+
+示例：
+
+```go
+const PI float64 = 3.1415926
+const AppName = "Go学习"
+const MaxRetry = 3
+```
+
+------
+
+### 2. 一次声明多个常量
+
+```go
+const (
+    StatusOK       = 200
+    StatusNotFound = 404
+    StatusError    = 500
+)
+
+// 或者带类型
+const (
+    Monday, Tuesday, Wednesday = 1, 2, 3
+)
+```
+
+### iota —— 常量计数器（非常常用）
+
+> iota 是 Go 特有的常量生成器，在 const 声明块中从 0 开始自增。
+
+```go
+const (
+    Sunday    = iota  // 0
+    Monday            // 1
+    Tuesday           // 2
+    Wednesday         // 3
+    Thursday          // 4
+    Friday            // 5
+    Saturday          // 6
+)
+```
+
+#### 常见高级用法：
+
+**跳过某个值**
+
+```go
+const (
+    a = iota  // 0
+    b         // 1
+    _         // 跳过 2
+    c         // 3
+)
+```
+
+**位运算（权限、标志位）**
+
+
+
 ### 基本类型（int、string、bool、float64）
+
 ### 数组 vs 切片（slice）
 ### map
 ### 结构体（struct）
