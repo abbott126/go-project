@@ -72,7 +72,8 @@ go test -run TestXxx      # 只运行指定测试函数
 ```
 ### go fmt 命令示例：
 ```shell
-go fmt  *.go
+go fmt ./...              # 格式化当前模块所有文件
+go fmt main.go            # 格式化单个文件
 ```
 ### go mod 命令示例：
 ```shell
@@ -84,8 +85,15 @@ go mod graph查看依赖关系图
 go mod why 包名解释为什么需要某个依赖
 ```
 
-## 基础语法：变量、常量、基本类型（int、string、bool、float64）、数组 vs 切片（slice）、map、结构体（struct）。
+## 基础语法：
+> 变量、常量、基本类型（int、string、bool、float64）、数组 vs 切片（slice）、map、结构体（struct）。
 
+### 变量
+### 常量
+### 基本类型（int、string、bool、float64）
+### 数组 vs 切片（slice）
+### map
+### 结构体（struct）
 
 
 
