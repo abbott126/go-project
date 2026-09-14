@@ -89,13 +89,40 @@ go mod why 包名解释为什么需要某个依赖
 > 变量、常量、基本类型（int、string、bool、float64）、数组 vs 切片（slice）、map、结构体（struct）。
 
 ### 变量
+方式一：完整声明（使用 var ）
+
+```Go
+var 变量名 类型
+var 变量名 类型 = 初始值
+```
+示例：
+```Go
+var name string          // 声明但不赋值（会使用零值）
+var age int = 25         // 声明并赋值
+var isStudent bool = true
+```
+
+
+
+方式二：类型推断（最常用）
+```Go
+var name = "张三"        // 编译器自动推断为 string
+var age = 25             // 推断为 int
+```
+方式三：短变量声明（函数内部最推荐）
+
+```Go
+name := "张三"           // 只能在函数内部使用
+age := 25
+isOk := true
+```
+注意：:= 只能在函数内部使用，包级别变量必须用 var。
+
 ### 常量
 ### 基本类型（int、string、bool、float64）
 ### 数组 vs 切片（slice）
 ### map
 ### 结构体（struct）
-
-
 
 ## 控制流：if、for（唯一循环）、switch、range。
 
