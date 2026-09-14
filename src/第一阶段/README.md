@@ -118,6 +118,11 @@ isOk := true
 ```
 注意：:= 只能在函数内部使用，包级别变量必须用 var。
 
+
+#### 定义零值
+Go 中变量声明后如果没有赋值，会自动拥有零值：
+![Screenshot 2026-09-14 at 20.47.19.png](../../../../../../../../var/folders/gc/6d8y5nms19xcp5dlh29kzx640000gn/T/TemporaryItems/NSIRD_screencaptureui_2tRoKs/Screenshot%202026-09-14%20at%2020.47.19.png)
+
 ### 常量
 ### 基本类型（int、string、bool、float64）
 ### 数组 vs 切片（slice）
